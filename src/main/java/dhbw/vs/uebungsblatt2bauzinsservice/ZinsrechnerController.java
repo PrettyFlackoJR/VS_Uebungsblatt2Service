@@ -1,4 +1,4 @@
-package dhbw.vs.uebungsblatt2service;
+package dhbw.vs.uebungsblatt2bauzinsservice;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +45,7 @@ public class ZinsrechnerController {
         restbetraege.add(kreditbetrag);
         for (int i = 1; i < laufzeit; i++) {
             double restschuld = kreditbetrag * Math.pow(q, i) - rueckzahlung * ((Math.pow(q, i) - 1) / (zinssatz / 12));
-            restschuld = Math.round(restschuld * 100) / 100;
+            restschuld = Math.round(restschuld * 100.0) / 100.0;
             restbetraege.add(restschuld);
         }
         restbetraege.add(0.0);
