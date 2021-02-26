@@ -38,11 +38,13 @@ public class ZinsrechnerController {
 
     public Collection<Double> plan(double kreditbetrag, double zinssatz, double rueckzahlung) {
         Collection<Double> restbetraege = null;
-        double q = 1 + (zinssatz / 12);
         int laufzeit = laufzeit(kreditbetrag, zinssatz, rueckzahlung);
+        zinssatz = zinssatz / 100;
+        double q = 1 + (zinssatz / 12);
         restbetraege.add(kreditbetrag);
         for (int i = 1; i < laufzeit; i++) {
             double restschuld = kreditbetrag * Math.pow(q, i) - rueckzahlung * ((Math.pow(q, i) - 1) / (zinssatz / 12));
+            restschuld = Math.round(restschuld * 100) / 100;
             restbetraege.add(restschuld);
         }
         restbetraege.add(0.0);
