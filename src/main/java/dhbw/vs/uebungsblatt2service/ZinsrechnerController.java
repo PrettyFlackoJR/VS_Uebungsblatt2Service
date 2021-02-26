@@ -11,14 +11,14 @@ import java.util.Collection;
 @RequestMapping("/zinsen")
 public class ZinsrechnerController {
 
-    @GetMapping
+    @GetMapping("/laufzeit")
     public int berechneLaufzeitInMonaten(@RequestParam double kreditbetrag,
                                          @RequestParam double zinssatz,
                                          @RequestParam double rueckzahlung) {
         return laufzeit(kreditbetrag, zinssatz, rueckzahlung);
     }
 
-    @GetMapping
+    @GetMapping(path = "/rueckzahlungsplan")
     public Collection<Double> rueckzahlungsplan(@RequestParam double kreditbetrag,
                                                 @RequestParam double zinssatz,
                                                 @RequestParam double rueckzahlung) {
