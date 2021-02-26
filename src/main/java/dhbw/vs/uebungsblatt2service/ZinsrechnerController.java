@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @RestController
@@ -37,7 +38,7 @@ public class ZinsrechnerController {
     }
 
     public Collection<Double> plan(double kreditbetrag, double zinssatz, double rueckzahlung) {
-        Collection<Double> restbetraege = null;
+        Collection<Double> restbetraege = new ArrayList<Double>();
         int laufzeit = laufzeit(kreditbetrag, zinssatz, rueckzahlung);
         zinssatz = zinssatz / 100;
         double q = 1 + (zinssatz / 12);
